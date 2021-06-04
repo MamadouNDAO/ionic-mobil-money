@@ -1,0 +1,106 @@
+
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="returnHome()">
+          <ion-icon class="menu" name="home-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <img class="logo" src="../../../assets/images/logo.png" alt="logo">
+    </ion-toolbar>
+    <div class="titre">
+        Dépot
+    </div>
+
+    <ion-segment  mode="md" [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="0">
+        Emmetteur
+      </ion-segment-button>
+
+      <ion-segment-button value="1">
+        Destinataire
+      </ion-segment-button>
+    </ion-segment>
+  </ion-header>
+<ion-content>
+  <form [formGroup]="emetForm" class="formulaire">
+  <div [hidden]="!isEmettor" >
+      <div formGroupName="clientDepot">
+        <ion-item class="ion-no-padding" lines="none" color="transparent">
+          <ion-label position="floating">CNI:</ion-label>
+          <ion-input #cn formControlName="cnid" (ionChange)="spaced(cn)" type="text" placeholder="Numéro CNI">
+          </ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.cni">
+          <ng-container *ngIf="cnid.hasError(error.type) && (cnid.dirty || cnid.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+
+        <ion-item class="ion-no-padding" lines="none" color="transparent">
+          <ion-label position="floating">Prénom et Nom:</ion-label>
+          <ion-input formControlName="nom" type="text"  placeholder="Prénom et nom">
+          </ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.nom">
+          <ng-container *ngIf="nomD.hasError(error.type) && (nomD.dirty || nomD.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+
+        <ion-item class="ion-no-padding" lines="none" color="transparent">
+          <ion-label position="floating">Téléphone:</ion-label>
+          <ion-input formControlName="telephone" type="text"  placeholder="Téléphone">
+          </ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.phone">
+          <ng-container *ngIf="phoneD.hasError(error.type) && (phoneD.dirty || phoneD.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+
+      </div>
+      <ion-item class="ion-no-padding" lines="none" color="transparent">
+        <ion-label position="floating">Montant:</ion-label>
+        <ion-input #mont [min]="500" (ionBlur)="checkFrais(mont)" formControlName="montant" type="number" placeholder="Montant">
+        </ion-input>
+      </ion-item>
+    <div *ngFor="let error of errorMessages.montant">
+      <ng-container *ngIf="montant.hasError(error.type) && (montant.dirty || montant.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+
+      <ion-item class="ion-no-padding" id="frais" lines="none" color="transparent">
+        <span>Frais: {{frais}}</span>
+      </ion-item>
+  </div>
+
+  <div [hidden]="!isDestinator"  formGroupName="clientRetrait">
+      <ion-item class="ion-no-padding" lines="none" color="transparent">
+        <ion-label position="floating">Prénom et Nom:</ion-label>
+        <ion-input type="text" formControlName="nom" placeholder="Prénom et Nom">
+        </ion-input>
+      </ion-item>
+    <div *ngFor="let error of errorMessages.nom">
+      <ng-container *ngIf="nomR.hasError(error.type) && (nomR.dirty || nomR.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+
+      <ion-item class="ion-no-padding" lines="none" color="transparent">
+        <ion-label position="floating">Téléphone:</ion-label>
+        <ion-input type="text" formControlName="telephone" placeholder="Téléphone">
+        </ion-input>
+      </ion-item>
+    <div *ngFor="let error of errorMessages.phone">
+      <ng-container *ngIf="phoneR.hasError(error.type) && (phoneR.dirty || phoneR.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+  </div>
+  </form>
+  <br>
+  <ion-button [disabled]="emetForm.invalid" class="ion-button-class" (click)="saveDepot()" shape="round" expand="block" fill="solid" size="large">Valider</ion-button>
+
+</ion-content>

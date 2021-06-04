@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="returnHome()">
+        <ion-icon class="menu" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <img class="logo" src="./assets/images/logo.png" alt="logo">
+
+
+  </ion-toolbar>
+
+ <ion-card>
+    <ion-card-header id="titre" class="somme">
+      Mon solde disponible
+    </ion-card-header>
+    <h5 id="som">{{solde}} fcfa</h5>
+    <h6 id="maj">Dernière mise à jour</h6>
+  </ion-card>
+</ion-header>
+
+<ion-content>
+  <div class="list">
+    <ion-item (click)="navigTo('depot')" >
+      <ion-icon size="small" name="return-up-forward-outline"></ion-icon>
+      Dépot
+    </ion-item>
+    <ion-item (click)="navigTo('retrait')">
+      <ion-icon size="small" name="return-up-back-outline"></ion-icon>
+      Retrait
+    </ion-item>
+    <ion-item *ngIf="!isAdmin">
+      <ion-icon size="small" name="swap-horizontal-outline"></ion-icon>
+      Mes transactions
+    </ion-item>
+    <ion-item *ngIf="isAdmin" (click)="navigTo('host/alltransac')">
+      <ion-icon size="small" name="sync-circle-outline"></ion-icon>
+      Toutes les transactions
+    </ion-item>
+    <ion-item *ngIf="isAdmin" (click)="navigTo('host/commission')">
+      <ion-icon size="small" name="cash-outline"></ion-icon>
+      Mes commissions
+    </ion-item>
+    <ion-item (click)="navigTo('host/calcul')">
+      <ion-icon size="small" name="calculator-outline"></ion-icon>
+      Calculateur de frais
+    </ion-item>
+    <ion-item (click)="deconnect()">
+      <ion-icon size="small" name="power-outline"></ion-icon>
+      Déconnexion
+    </ion-item>
+  </div>
+</ion-content>

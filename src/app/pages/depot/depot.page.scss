@@ -1,0 +1,75 @@
+ion-toolbar{
+  --background: #fff;
+  height: 120px;
+  border-radius: 0 0 30px 30px;
+}
+.logo{
+  position: relative;
+  width: 40px;
+  left: 33%;
+  text-align: center;
+}
+.menu{
+  color: #07AEEF;
+}
+ion-content{
+  --background: #E5E5E5;
+}
+ion-header{
+  background: #E5E5E5;
+}
+.titre{
+  font-family: Helvetica, sans-serif;
+  color: #07AEEF;
+  padding-bottom: 5px;
+  font-size: 13px;
+ /* padding: 0 !important;*/
+  position: relative;
+  text-align: center;
+  margin: -23px auto auto auto;
+  z-index: 100;
+ border-bottom: #07AEEF solid 3px;
+  width: 90px;
+  ion-icon{
+   /* margin-right: 7px;*/
+  }
+}
+ion-segment{
+  background: #fff;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+ion-item{
+  font-size: 13px;
+}
+ion-item ion-label{
+  color: grey;
+  font-size: 12px;
+}
+ion-item{
+  border-bottom: #0d0d0d solid 1px;
+  --min-height: 55px !important;
+  --max-height: 55px !important;
+  height: 55px !important;
+  --inner-padding-end: 0px !important;
+}
+#frais{
+  text-align: center;
+  color: #FA4A0C;
+  width: 90px;
+  float: right;
+}
+ion-button{
+  text-align: center;
+  margin: 50px auto auto auto;
+  width: 80%;
+}
+.formulaire{
+  width: 90%;
+  margin: auto;
+  //border: 1px solid red;
+  height: 68%;
+}
+.error-message{
+  color: red;
+}

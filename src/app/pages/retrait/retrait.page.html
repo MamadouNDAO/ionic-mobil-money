@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="returnHome()">
+        <ion-icon class="menu" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <img class="logo" src="../../../assets/images/logo.png" alt="logo">
+  </ion-toolbar>
+  <div class="titre">
+    Retrait
+  </div>
+
+  <div class="retrait cni">
+    <form [formGroup]="codeForm">
+      <ion-item class="ion-no-padding"  color="transparent">
+        <ion-label position="floating">CODE:</ion-label>
+        <ion-input [disabled]="codeForm.valid" #code type="text" formControlName="code" (ionChange)="test(code)" placeholder="Code">
+        </ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.code">
+        <ng-container *ngIf="sode.hasError(error.type) && (sode.dirty || sode.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+  <br>
+  <br>
+  <ion-segment *ngIf="isOki" mode="md" [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="0">
+      Bénéficiaire
+    </ion-segment-button>
+
+    <ion-segment-button value="1">
+      Emetteur
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <div class="formulaire">
+    <div [hidden]="!isBenef">
+      <form *ngIf="isOki" [formGroup]="cniForm">
+        <ion-item lines="full" class="ion-no-padding cni"  color="transparent">
+          <ion-label position="floating">CNI:</ion-label>
+          <ion-input #cnis type="text" (ionChange)="checkCni(cnis)" formControlName="cnid" placeholder="Numéro CNI:">
+          </ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.cni">
+          <ng-container *ngIf="cni.hasError(error.type) && (cni.dirty || cni.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+      </form>
+      <div *ngIf="isOki" >
+        <div>
+          <ion-item lines="none" color="transparent" class="info">Nom: {{nomR}}</ion-item>
+          <ion-item lines="none" color="transparent" class="info">Téléphone: {{teleR}}</ion-item>
+          <ion-item lines="none" color="transparent" class="info">Montant: {{montant}}</ion-item>
+          <ion-item lines="none" color="transparent" class="info">Envoyé le: {{date}}</ion-item>
+        </div>
+      </div>
+    </div>
+
+    <div [hidden]="!isEmetor">
+      <ion-item lines="none" color="transparent" class="info">Nom: {{nomD}}</ion-item>
+      <ion-item lines="none" color="transparent" class="info">Téléphone: {{teleD}}</ion-item>
+      <ion-item lines="none" color="transparent" class="info">Numéro CNI: {{cniD}}</ion-item>
+    </div>
+  </div>
+  <ion-button *ngIf="isOki" [disabled]="cniForm.invalid" (click)="retire()" class="ion-button-class"  shape="round" expand="block" fill="solid" size="large">Valider</ion-button>
+
+</ion-content>

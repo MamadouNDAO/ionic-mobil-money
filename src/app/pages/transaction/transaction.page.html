@@ -1,0 +1,83 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="returnHome()">
+        <ion-icon class="menu" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <img class="logo" src="../../../assets/images/logo.png" alt="logo">
+  </ion-toolbar>
+  <div class="titre">
+    Mes transactions
+  </div>
+</ion-header>
+
+<ion-content>
+  <ion-row class="espace">
+    <ion-col class="filtre" size="4">
+      <ion-item lines="none">
+        date
+        <ion-icon size="small" name="chevron-down-outline"></ion-icon>
+      </ion-item>
+    </ion-col>
+    <ion-col class="filtre" size="4">
+      <ion-item lines="none">
+        <ion-label>Type</ion-label>
+        <ion-select okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="brown">Dépot</ion-select-option>
+          <ion-select-option value="blonde">Retrait</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col class="filtre" size="4">
+      <ion-item lines="none">
+        Montant
+        <ion-icon size="small" name="chevron-down-outline"></ion-icon>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+    <ion-row class="header">
+      <ion-col>
+        <ion-item lines="none" (click)="onTri()">
+          <ion-label>Date</ion-label>
+          <ion-icon size="small" name="swap-vertical-outline"></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label>Type</ion-label>
+          <ion-icon size="small" name="swap-vertical-outline"></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label>Montant</ion-label>
+          <ion-icon size="small" name="swap-vertical-outline"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  <ion-content class="liste">
+        <ion-row >
+          <ion-col class="col" size="4">
+            <p *ngFor="let i of stores">{{i.date}}</p>
+          </ion-col>
+          <ion-col class="col" size="4">
+            <p *ngFor="let i of stores">{{i[0].type}}</p>
+          </ion-col>
+          <ion-col class="col" size="4">
+            <p *ngFor="let i of stores">{{i.montant}}</p>
+          </ion-col>
+        </ion-row>
+    <ion-infinite-scroll (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content  loadingSpinner="bubbles">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+  <div class="somm">
+    <ion-row>
+      <ion-col class="total" size="5">Total</ion-col>
+      <ion-col>{{montant}}</ion-col>
+    </ion-row>
+  </div>
+</ion-content>

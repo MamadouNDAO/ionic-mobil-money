@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="returnHome()">
+        <ion-icon class="menu" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <img class="logo" src="../../../assets/images/logo.png" alt="logo">
+  </ion-toolbar>
+  <div class="titre">
+    Calculateur de frais
+  </div>
+</ion-header>
+
+<ion-content>
+  <form class="centre" [formGroup]="montForm">
+    <ion-item class="ion-no-padding"  color="transparent">
+      <ion-label position="floating">Montant:</ion-label>
+      <ion-input min="1" formControlName="montant" #mont type="number"  placeholder="Montant">
+      </ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.montant">
+      <ng-container *ngIf="montant.hasError(error.type) && (montant.dirty || montant.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+
+    <ion-button  class="ion-button-class" (click)="runCalcul(mont)" shape="round" expand="block" fill="solid" size="large">Calculer</ion-button>
+
+  </form>
+</ion-content>

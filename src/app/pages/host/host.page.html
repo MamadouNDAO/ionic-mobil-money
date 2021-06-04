@@ -1,0 +1,25 @@
+
+<ion-content>
+  <ion-tabs #tabs >
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="principal">
+        <ion-icon size="small" name="home-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button *ngIf="!isAdmin" tab="transaction" >
+        <ion-icon size="small" name="sync-circle-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button *ngIf="isAdmin" tab="alltransac" >
+        <ion-icon size="small" name="sync-circle-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button *ngIf="isAdmin" tab="commission">
+        <ion-icon size="small" name="cash-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="calcul">
+        <ion-icon size="small" name="calculator-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

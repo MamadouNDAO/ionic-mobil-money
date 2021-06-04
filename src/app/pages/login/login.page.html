@@ -1,0 +1,40 @@
+<ion-content>
+<ion-header class="ion-no-border">
+
+  <div class="login-header ion-padding">
+    <img class="logo-img" src="./assets/images/logo.png" alt="logo">
+    <div class="titre">Login</div>
+  </div>
+
+
+</ion-header>
+
+  <div class="center">
+    <form [formGroup]="singin">
+      <ion-item color="transparent">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input inputmode="email" formControlName="username" placeholder="Username">
+        </ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessage.username">
+        <ng-container *ngIf="username.hasError(error.type) && (username.dirty || username.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+      <ion-item color="transparent">
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input inputmode="password" type="password" formControlName="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessage.password">
+        <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+
+      <div class="forget">Mot de passe ounlié?</div>
+    </form>
+    <ion-button [disabled]="singin.invalid" (click)="logForm()" class="ion-button-class" shape="round" expand="block" fill="solid" size="large">Se connecter</ion-button>
+
+  </div>
+</ion-content>

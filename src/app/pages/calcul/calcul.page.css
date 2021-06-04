@@ -1,0 +1,60 @@
+ion-toolbar {
+  --background: #fff;
+  height: 120px;
+  border-radius: 0 0 30px 30px;
+}
+
+.logo {
+  position: relative;
+  width: 40px;
+  left: 33%;
+  text-align: center;
+}
+
+.menu {
+  color: #07AEEF;
+}
+
+ion-content {
+  --background: #E5E5E5;
+}
+
+ion-header {
+  background: #E5E5E5;
+}
+
+.titre {
+  font-family: Helvetica, sans-serif;
+  color: #07AEEF;
+  padding-bottom: 5px;
+  font-size: 13px;
+  /* padding: 0 !important;*/
+  position: relative;
+  text-align: center;
+  margin: -23px auto auto auto;
+  z-index: 100;
+  border-bottom: #07AEEF solid 3px;
+  width: 150px;
+}
+.titre ion-icon {
+  /* margin-right: 7px;*/
+}
+
+.centre {
+  width: 90%;
+  margin: auto;
+}
+
+.ion-button-class {
+  margin-top: 15px;
+  float: right;
+  padding: 12px;
+  --background: #FA4A0C;
+  color: #fff;
+}
+
+.error-message {
+  color: red;
+}
+
+/*# sourceMappingURL=calcul.page.css.map */
